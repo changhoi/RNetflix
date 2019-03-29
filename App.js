@@ -1,13 +1,36 @@
 import React from 'react';
+import { AppLoading, Font } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
+  state = {
+    loaded: false
+  };
+
+  handleError = error => console.log(error);
+
+  handleLoaded = () => this.setState({ loaded: true });
+
+  loadAssets = async () => {
+    await Font.loadAsync({
+      ...Ionicons.font
+    });
+  };
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
+    const { loaded } = this.state;
+    if (loaded) {
+      return (
+        <View style={styles.container}>
+          <Text>Hello World!</Text>
+        </View>
+      );
+    } else {
+      return (
+        <AppLoading onFinish={this.handleLoaded} onError={this.handleError} />
+      );
+    }
   }
 }
 
@@ -16,6 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 });
