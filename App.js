@@ -2,6 +2,7 @@ import React from 'react';
 import { AppLoading, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
+import MainNavigation from './navigation/MainNavigation';
 
 export default class App extends React.Component {
   state = {
@@ -21,14 +22,14 @@ export default class App extends React.Component {
   render() {
     const { loaded } = this.state;
     if (loaded) {
-      return (
-        <View style={styles.container}>
-          <Text>Hello World!</Text>
-        </View>
-      );
+      return <MainNavigation />;
     } else {
       return (
-        <AppLoading onFinish={this.handleLoaded} onError={this.handleError} />
+        <AppLoading
+          startAsync={this.loadAssets}
+          onFinish={this.handleLoaded}
+          onError={this.handleError}
+        />
       );
     }
   }
