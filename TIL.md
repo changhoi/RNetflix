@@ -1,21 +1,3 @@
-## Expo AppLoading component
-
-### 기본 사항
-
-- `import { AppLoading } from 'expo';
-
-  <AppLoading /> 컴포넌트는 세 개의 prop을 가질 수 있음
-  `<AppLoading startAsync={this.loadAssets} onFinish={this.handleLoaded} onError={this.handleError} />`
-
-1. handleError
-2. handleLoaded
-3. loadAssets: loadAssets가 진행되고 나서 결과로 handleError 또는 handleLoaded로 분기된다.
-
-### DOC
-
-- [Assets](https://docs.expo.io/versions/v32.0.0/sdk/asset/): `Assets.loadAsync` 부분
-- [AppLoading](https://docs.expo.io/versions/v32.0.0/sdk/app-loading/): `<AppLoading />` 부분
-
 ## Expo Ionicons
 
 ### 기본 사항
@@ -91,7 +73,7 @@ f(...'ABC') // -> f('A', 'B', 'C')
 f(...[1, 2, 3]) // -> f(1, 2, 3)
 ```
 
-## React-Navigator
+## React-Navigation
 
 - [ ] `DOC`: https://reactnavigation.org/docs/en/getting-started.html
 - [ ] `createButtonTabNavigator`: https://reactnavigation.org/docs/en/bottom-tab-navigator.html

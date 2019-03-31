@@ -17,3 +17,14 @@ iOS / Android Movie Discovery App built with RN
 - [ ] TV Shows
 - [ ] Search
 - [ ] Detail View
+
+## API Verbs
+
+- [x] Now Playing (Movies)
+- [x] Upcoming (Movie)
+- [x] Top Rated (TV)
+- [x] Popular (TV, Movies)
+- [x] Airing Today (TV)
+- [ ] TV Show Detail (TV)
+- [ ] Search Movies
+- [ ] Search TV
