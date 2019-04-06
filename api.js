@@ -30,6 +30,7 @@ export const tvApi = {
   topRated: () => api.get('tv/top_rated'),
   popular: () => api.get('tv/popular'),
   airingToday: () => api.get('tv/airing_today'),
+  airingThisWeek: () => api.get('tv/on_the_air'),
   showDetail: id =>
     api.get(`tv/${id}`, {
       params: {

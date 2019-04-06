@@ -16,7 +16,7 @@ export default class extends React.Component {
   }
 
   async componentDidMount() {
-    let popular, topRated, airingToday, error;
+    let popular, topRated, airingToday, airingThisWeek, error;
     try {
       ({
         data: { results: popular }
@@ -28,16 +28,33 @@ export default class extends React.Component {
       ({
         data: { results: airingToday }
       } = await tvApi.airingToday());
+      ({
+        data: { results: airingThisWeek }
+      } = await tvApi.airingThisWeek());
     } catch (e) {
       console.log(e);
       error = "Can't get TV";
     } finally {
-      this.setState({ loading: false, popular, topRated, airingToday, error });
+      this.setState({
+        loading: false,
+        popular,
+        topRated,
+        airingToday,
+        error,
+        airingThisWeek
+      });
     }
   }
 
   render() {
-    const { loading, topRated, airingToday, popular, error } = this.state;
+    const {
+      loading,
+      airingThisWeek,
+      topRated,
+      airingToday,
+      popular,
+      error
+    } = this.state;
     return (
       <TVPresenter
         popular={popular}
@@ -45,6 +62,7 @@ export default class extends React.Component {
         topRated={topRated}
         airingToday={airingToday}
         error={error}
+        airingThisWeek={airingThisWeek}
       />
     );
   }

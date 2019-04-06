@@ -11,7 +11,7 @@ iOS / Android Movie Discovery App built with RN
 - @expo/vector-icons
 - react-navigation
 - react-native-swiper
-
+- how to check children props 
 ## Screens
 
 - [ ] Movies
