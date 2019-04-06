@@ -1,8 +1,15 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
-import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import Loading from '../../components/Loader';
+import styled from 'styled-components';
+import MovieSlider from '../../components/MovieSlider';
+import { BG_COLOR } from '../../constants/Color';
+
+const Container = styled.ScrollView`
+  background-color: ${BG_COLOR};
+`;
 
 const MoviesPresenter = ({
   navigation,
@@ -11,20 +18,14 @@ const MoviesPresenter = ({
   popular,
   nowPlaying,
   error
-}) => {
-  if (loading) return <Loading />;
-  if (error) return <Text>{error}</Text>;
-  return (
-    <>
-      <SafeAreaView>
-        <Text>Movies</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Detail')}>
-          <Text> Go to Detail</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    </>
+}) =>
+  loading ? (
+    <Loading />
+  ) : (
+    <Container>
+      <MovieSlider movies={nowPlaying} />
+    </Container>
   );
-};
 
 export default withNavigation(MoviesPresenter);
 

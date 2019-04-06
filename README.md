@@ -10,6 +10,7 @@ iOS / Android Movie Discovery App built with RN
 - axios
 - @expo/vector-icons
 - react-navigation
+- react-native-swiper
 
 ## Screens
 
