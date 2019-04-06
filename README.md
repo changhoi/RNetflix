@@ -25,6 +25,6 @@ iOS / Android Movie Discovery App built with RN
 - [x] Top Rated (TV)
 - [x] Popular (TV, Movies)
 - [x] Airing Today (TV)
-- [ ] TV Show Detail (TV)
-- [ ] Search Movies
-- [ ] Search TV
+- [x] TV Show Detail (TV)
+- [x] Search Movies
+- [x] Search TV

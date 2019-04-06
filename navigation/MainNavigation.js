@@ -2,9 +2,6 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import TabNavigation from './TabNavigation';
 import DetailScreen from '../screens/Detail';
 import { headerStyles } from './config';
-
-console.log(headerStyles);
-
 const MainNavigation = createStackNavigator(
   {
     Tabs: { screen: TabNavigation, navigationOptions: { header: null } },
