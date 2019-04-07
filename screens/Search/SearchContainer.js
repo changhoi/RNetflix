@@ -1,5 +1,6 @@
 import SearchPresenter from './SearchPresenter';
 import React from 'react';
+import { movieApi, tvApi } from '../../api';
 
 export default class SearchContainer extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export default class SearchContainer extends React.Component {
       loading: false,
       movieResults: null,
       tvResults: null,
-      searchTerm: ''
+      searchTerm: '',
+      error: null
     };
   }
 
@@ -18,11 +20,26 @@ export default class SearchContainer extends React.Component {
     });
   };
 
-  onSubmitEditing = () => {
+  onSubmitEditing = async () => {
     const { searchTerm } = this.state;
     if (searchTerm !== '') {
-      alert('searching');
-      return;
+      let loading, movieResults, tvResults, error;
+      this.setState({
+        loading: true
+      });
+      try {
+        ({
+          data: { results: movieResults }
+        } = await movieApi.search(searchTerm));
+        ({
+          data: { results: tvResults }
+        } = await tvApi.search(searchTerm));
+      } catch (e) {
+        console.log(e);
+        error = "Can't search a thing";
+      } finally {
+        this.setState({ loading: false, movieResults, tvResults, error });
+      }
     }
   };
 

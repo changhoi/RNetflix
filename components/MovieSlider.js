@@ -22,7 +22,7 @@ const MovieSlider = ({ movies }) =>
     >
       {movies &&
         movies
-          .filter(moive => movies.backdrop_path !== null)
+          .filter(movie => movie.backdrop_path !== null)
           .map(movie => (
             <View key={movie.id}>
               <MovieSlide
