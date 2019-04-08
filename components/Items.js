@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MovieRating from './MovieRating';
 import MoviePoster from './MoviePoster';
-import { View } from 'react-native';
 import { GREY_COLOR } from '../constants/Color';
+import { TouchableWithoutFeedback } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
 const Container = styled.View`
   width: 110px;
@@ -35,6 +36,9 @@ const Overview = styled.Text`
 `;
 
 const MovieItems = ({
+  navigation,
+  isMovie = true,
+  id,
   overview,
   posterPhoto,
   title,
@@ -42,28 +46,35 @@ const MovieItems = ({
   horizontal = false
 }) =>
   horizontal ? (
-    <HContainer>
-      <MoviePoster path={posterPhoto} />
-      <Column>
-        <Title big={true}>{title}</Title>
-        <MovieRating votes={voteAvg} />
-        {overview ? <Overview numberOfLines={6}>{overview}</Overview> : null}
-      </Column>
-    </HContainer>
+    <TouchableWithoutFeedback onPress={() => navigation.navigate('Detail')}>
+      <HContainer>
+        <MoviePoster path={posterPhoto} />
+        <Column>
+          <Title big={true}>{title}</Title>
+          <MovieRating votes={voteAvg} />
+          {overview ? <Overview numberOfLines={6}>{overview}</Overview> : null}
+        </Column>
+      </HContainer>
+    </TouchableWithoutFeedback>
   ) : (
-    <Container>
-      <MoviePoster path={posterPhoto} />
-      <Title>{title}</Title>
-      <MovieRating votes={voteAvg} />
-    </Container>
+    <TouchableWithoutFeedback
+      onPress={() => navigation.navigate('Detail', { isMovie, id })}
+    >
+      <Container>
+        <MoviePoster path={posterPhoto} />
+        <Title>{title}</Title>
+        <MovieRating votes={voteAvg} />
+      </Container>
+    </TouchableWithoutFeedback>
   );
 
-export default MovieItems;
+export default withNavigation(MovieItems);
 
 MovieItems.propTypes = {
   // id: PropTypes.number.isRequired,
   posterPhoto: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   voteAvg: PropTypes.number.isRequired,
-  overview: PropTypes.string
+  overview: PropTypes.string,
+  isMovie: PropTypes.bool
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Text } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import makePhotoUrl from '../utils/makePhotoUri';
 import Layout from '../constants/Layout';
 import MoviePoster from './MoviePoster';
@@ -58,6 +58,8 @@ const BtnText = styled.Text`
 `;
 
 const MovieSlide = ({
+  navigation,
+  isMovie,
   posterPhoto,
   backgroundPhoto,
   id,
@@ -73,7 +75,9 @@ const MovieSlide = ({
         <Title>{title}</Title>
         {voteAvg ? <MovieRating votes={voteAvg} inSlide={true} /> : null}
         {overview ? <Overview numberOfLines={9}>{overview}</Overview> : null}
-        <BtnContainer>
+        <BtnContainer
+          onPress={() => navigation.navigate('Detail', { id, isMovie })}
+        >
           <BtnText>More Detail</BtnText>
         </BtnContainer>
       </Column>
@@ -87,7 +91,8 @@ MovieSlide.propTypes = {
   backgroundPhoto: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   voteAvg: PropTypes.number.isRequired,
-  overview: PropTypes.string.isRequired
+  overview: PropTypes.string.isRequired,
+  isMovie: PropTypes.bool
 };
 
-export default MovieSlide;
+export default withNavigation(MovieSlide);

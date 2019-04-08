@@ -28,6 +28,7 @@ const TVPresenter = ({
             .filter(tv => tv.poster_path !== null)
             .map(tv => (
               <TVItems
+                isMovie={false}
                 key={tv.id}
                 id={tv.id}
                 posterPhoto={tv.poster_path}
@@ -43,6 +44,7 @@ const TVPresenter = ({
             .filter(tv => tv.poster_path !== null)
             .map(tv => (
               <TVItems
+                isMovie={false}
                 key={tv.id}
                 id={tv.id}
                 posterPhoto={tv.poster_path}
@@ -58,6 +60,7 @@ const TVPresenter = ({
             .filter(tv => tv.poster_path !== null)
             .map(tv => (
               <TVItems
+                isMovie={false}
                 key={tv.id}
                 id={tv.id}
                 posterPhoto={tv.poster_path}
@@ -73,6 +76,7 @@ const TVPresenter = ({
             .filter(tv => tv.poster_path !== null)
             .map(tv => (
               <TVItems
+                isMovie={false}
                 key={tv.id}
                 id={tv.id}
                 posterPhoto={tv.poster_path}

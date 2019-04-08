@@ -26,6 +26,7 @@ const MovieSlider = ({ movies }) =>
           .map(movie => (
             <View key={movie.id}>
               <MovieSlide
+                isMovie={true}
                 overview={movie.overview}
                 title={movie.title}
                 voteAvg={movie.vote_average}
