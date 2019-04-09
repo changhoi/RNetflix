@@ -32,6 +32,8 @@ const MoviesPresenter = ({
             .filter(movie => movie.poster_path !== null)
             .map(movie => (
               <MovieItems
+                overview={movie.overview}
+                backgroundPhoto={movie.backdrop_path}
                 key={movie.id}
                 id={movie.id}
                 posterPhoto={movie.poster_path}
@@ -47,6 +49,7 @@ const MoviesPresenter = ({
             .filter(movie => movie.poster_path !== null)
             .map(movie => (
               <MovieItems
+                backgroundPhoto={movie.backdrop_path}
                 overview={movie.overview}
                 horizontal={true}
                 key={movie.id}

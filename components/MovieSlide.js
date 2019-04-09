@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 import makePhotoUrl from '../utils/makePhotoUri';
 import Layout from '../constants/Layout';
 import MoviePoster from './MoviePoster';
-import { ACTIVE_COLOR, GREY_COLOR, TINT_COLOR } from '../constants/Color';
+import { ACTIVE_COLOR, TINT_COLOR } from '../constants/Color';
 import MovieRating from './MovieRating';
 
 const Container = styled.View`
@@ -76,7 +76,17 @@ const MovieSlide = ({
         {voteAvg ? <MovieRating votes={voteAvg} inSlide={true} /> : null}
         {overview ? <Overview numberOfLines={9}>{overview}</Overview> : null}
         <BtnContainer
-          onPress={() => navigation.navigate('Detail', { id, isMovie })}
+          onPress={() =>
+            navigation.navigate('Detail', {
+              voteAvg,
+              isMovie,
+              posterPhoto,
+              backgroundPhoto,
+              id,
+              title,
+              overview
+            })
+          }
         >
           <BtnText>More Detail</BtnText>
         </BtnContainer>

@@ -41,12 +41,26 @@ const MovieItems = ({
   id,
   overview,
   posterPhoto,
+  backgroundPhoto,
   title,
   voteAvg,
   horizontal = false
 }) =>
   horizontal ? (
-    <TouchableWithoutFeedback onPress={() => navigation.navigate('Detail')}>
+    <TouchableWithoutFeedback
+      onPress={() =>
+        navigation.navigate('Detail', {
+          isMovie,
+          id,
+          overview,
+          posterPhoto,
+          backgroundPhoto,
+          title,
+          voteAvg,
+          overview
+        })
+      }
+    >
       <HContainer>
         <MoviePoster path={posterPhoto} />
         <Column>
@@ -58,7 +72,18 @@ const MovieItems = ({
     </TouchableWithoutFeedback>
   ) : (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate('Detail', { isMovie, id })}
+      onPress={() =>
+        navigation.navigate('Detail', {
+          isMovie,
+          id,
+          overview,
+          backgroundPhoto,
+          posterPhoto,
+          title,
+          voteAvg,
+          overview
+        })
+      }
     >
       <Container>
         <MoviePoster path={posterPhoto} />
